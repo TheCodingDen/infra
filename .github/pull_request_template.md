@@ -12,6 +12,7 @@ Related issue: #0000 (required for non-members)
 2. [ ] Make sure the list is in sequence
 
 ## Checklist
-- [ ] I ran a formatter on all changes in this PR
-- [ ] I have sent any relevant secrets to infrastructure admins
+- [ ] I ran a formatter on all changes in this PR.
+- [ ] I have sent any relevant secrets to infrastructure admins.
 - [ ] I have ensured that any software changes are tested and have passed for the versions included.
+- [ ] I have added the changes to the resource tree in `README.md`.
