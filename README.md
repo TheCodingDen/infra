@@ -11,4 +11,4 @@ These are the top-level admins of TCD's infrastructure. They approve changes to 
 ## Infrastructure Overview
 - Cluster `arealmreborn` (FF14 DC themed)
   - Node pool `primal`
-    - Nodes: 0-5, autoscales
+    - Nodes: 1-5, autoscales

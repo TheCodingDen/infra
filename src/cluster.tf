@@ -11,7 +11,7 @@ resource "digitalocean_kubernetes_cluster" "main" {
     name       = "primal"
     size       = "s-1vcpu-2gb"
     auto_scale = true
-    min_nodes  = 0
+    min_nodes  = 1
     max_nodes  = 5
   }
 }
