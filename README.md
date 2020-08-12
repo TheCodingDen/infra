@@ -13,4 +13,6 @@ These are the top-level admins of TCD's infrastructure. They approve changes to 
 - Cluster `arealmreborn` (FF14 DC themed)
   - Node pool `primal`
     - Nodes: 1-5, autoscales
-  - Projects bot pod
+  - Projects Bot
+    - 1 pod w/ `thecodingden/projects-bot` image
+    - 1 x 1Gi DO Volume
