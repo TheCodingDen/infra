@@ -17,3 +17,10 @@ resource "digitalocean_kubernetes_cluster" "main" {
     max_nodes  = 5
   }
 }
+
+provider "kubernetes" {
+  host                   = digitalocean_kubernetes_cluster.main.kube_config.0.host
+  client_certificate     = digitalocean_kubernetes_cluster.main.kube_config.0.client_certificate
+  client_key             = digitalocean_kubernetes_cluster.main.kube_config.0.client_key
+  cluster_ca_certificate = digitalocean_kubernetes_cluster.main.kube_config.0.cluster_ca_certificate
+}
