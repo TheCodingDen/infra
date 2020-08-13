@@ -31,8 +31,8 @@ resource "kubernetes_pod" "projects-bot" {
         for_each = var.projects_bot_env_vars
 
         content {
-          name  = each.key
-          value = each.value
+          name  = env.key
+          value = env.value
         }
       }
     }
