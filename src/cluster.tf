@@ -19,9 +19,8 @@ resource "digitalocean_kubernetes_cluster" "main" {
 }
 
 provider "kubernetes" {
-  host                   = digitalocean_kubernetes_cluster.main.kube_config.0.host
-  client_certificate     = digitalocean_kubernetes_cluster.main.kube_config.0.client_certificate
-  client_key             = digitalocean_kubernetes_cluster.main.kube_config.0.client_key
+  host                   = digitalocean_kubernetes_cluster.main.endpoint
+  token                  = digitalocean_kubernetes_cluster.main.kube_config[0].token
   cluster_ca_certificate = base64decode(digitalocean_kubernetes_cluster.main.kube_config.0.cluster_ca_certificate)
   load_config_file       = false
 }
