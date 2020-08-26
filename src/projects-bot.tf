@@ -28,6 +28,9 @@ resource "kubernetes_deployment" "projects_bot" {
   }
   spec {
     template {
+      metadata {
+        labels = [ "discord-bot" ]
+      }
       spec {
         container {
           image = "thecodingden/projects-bot"
