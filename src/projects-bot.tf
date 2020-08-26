@@ -10,7 +10,6 @@ resource "kubernetes_persistent_volume_claim" "data" {
     namespace = kubernetes_namespace.projects_bot_ns.id
   }
   spec {
-    volume_name = "projects-bot-data"
     access_modes = ["ReadWriteOnce"]
     resources {
       requests = {
@@ -23,7 +22,7 @@ resource "kubernetes_persistent_volume_claim" "data" {
 
 resource "kubernetes_deployment" "projects_bot" {
   metadata {
-    name = "projects-bot-deployment"
+    name      = "projects-bot-deployment"
     namespace = kubernetes_namespace.projects_bot_ns.id
   }
   spec {
@@ -55,7 +54,7 @@ resource "kubernetes_deployment" "projects_bot" {
         volume {
           name = "projects-bot-pvc"
           persistent_volume_claim {
-              claim_name = kubernetes_persistent_volume_claim.data.metadata[0].name
+            claim_name = kubernetes_persistent_volume_claim.data.metadata[0].name
           }
         }
       }
