@@ -26,10 +26,17 @@ resource "kubernetes_deployment" "projects_bot" {
     namespace = kubernetes_namespace.projects_bot_ns.id
   }
   spec {
+    selector {
+      match_labels = {
+        ident = "projects-bot"
+        type  = "discord-bot"
+      }
+    }
     template {
       metadata {
         labels = {
-          type = "discord-bot"
+          ident = "projects-bot"
+          type  = "discord-bot"
         }
       }
       spec {
@@ -52,7 +59,6 @@ resource "kubernetes_deployment" "projects_bot" {
           }
         }
         volume {
-          name = "projects-bot-pvc"
           persistent_volume_claim {
             claim_name = kubernetes_persistent_volume_claim.data.metadata[0].name
           }
