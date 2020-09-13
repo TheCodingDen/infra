@@ -29,14 +29,14 @@ resource "kubernetes_deployment" "projects_bot" {
     selector {
       match_labels = {
         ident = "projects-bot"
-        type = "discord-bot"
+        type  = "discord-bot"
       }
     }
     template {
       metadata {
         labels = {
           ident = "projects-bot"
-          type = "discord-bot"
+          type  = "discord-bot"
         }
       }
       spec {
