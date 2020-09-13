@@ -24,3 +24,14 @@ provider "kubernetes" {
   cluster_ca_certificate = base64decode(digitalocean_kubernetes_cluster.main.kube_config.0.cluster_ca_certificate)
   load_config_file       = false
 }
+
+terraform {
+  backend "remote" {
+    hostname     = "app.terraform.io"
+    organization = "TheCodingDen"
+
+    workspaces {
+      name = "infra"
+    }
+  }
+}
