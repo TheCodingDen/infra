@@ -59,6 +59,7 @@ resource "kubernetes_deployment" "projects_bot" {
           }
         }
         volume {
+          name = "projects-bot-pvc"
           persistent_volume_claim {
             claim_name = kubernetes_persistent_volume_claim.data.metadata[0].name
           }
