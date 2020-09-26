@@ -1,0 +1,50 @@
+[source.k8s_logs]
+  type = "kubernetes_logs"
+
+[transforms.discord_alert_filter]
+  type   = "filter"
+  inputs = ["k8s_logs"]
+
+  condition."message.contains" = "DISCORD_ALERT"
+
+[transforms.discord_alert_format]
+  type    = "lua"
+  inputs  = ["discord_alert_filter"]
+  version = "2"
+
+  hooks.process = """
+  function (event, emit)
+    local timestamp = os.date("!%Y-%m-%dT%TZ", event.log.timestamp)
+    local discord_embed = {}
+    discord_embed.timestamp = timestamp
+
+    discord_embed.title = "Infrastructure Alert"
+    discord_embed.color = 13187873
+    discord_embed.description = "```json\n" .. event.log .. "\n```"
+
+    event.log = nil
+    event.log.content = "ALERT <@&729395125318582394>"
+    event.log.embeds = {discord_embed}
+
+    emit(event)
+  """
+
+[sink.discord_alert]
+  type        = "http"
+  inputs      = ["discord_alert_format"]
+  compression = "gzip"
+  healthcheck = false
+
+  encoding.codec = "json"
+  uri = "${DISCORD_ALERT_WEBHOOK_URI}"
+
+
+[sink.honeycomb]
+  type    = "honeycomb"
+  inputs  = ["k8s_logs"]
+  api_key = "${HONEYCOMB_API_KEY}"
+  dataset = "k8s_logs"
+
+# Currently a nightly feature
+# [api]
+#   enabled = true
