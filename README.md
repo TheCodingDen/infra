@@ -16,6 +16,8 @@ These are the top-level admins of TCD's infrastructure. They approve changes to 
   - Projects Bot
     - 1 pod w/ `thecodingden/projects-bot` image
     - 1 x 1Gi DO Volume
+  - Utilities Bot
+    - 1 pod w/ `thecodingden/tcd-utilities-bot` image
 
 ## Misc notes
 <details><summary><b>Prefer explicit K8s Deployments over Pods</b></summary>
