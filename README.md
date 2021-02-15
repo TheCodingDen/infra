@@ -5,7 +5,6 @@ This repository is public for the sake of education and transparency. Non-member
 
 ## Admins
 These are the top-level admins of TCD's infrastructure. They approve changes to the infrastructure and have production access.
-- [Khionu](https://github.com/khionu)
 - [Alex](https://github.com/obliv1on)
 - [LW](https://github.com/linuswillner)
 
