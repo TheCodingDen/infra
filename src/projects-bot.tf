@@ -49,6 +49,11 @@ resource "kubernetes_deployment" "projects_bot" {
             value = var.projects_bot_token
           }
 
+          env {
+            name  = "GITHUB_TOKEN"
+            value = var.projects_bot_github_token
+          }
+
           dynamic "env" {
             for_each = var.projects_bot_env_vars
 
